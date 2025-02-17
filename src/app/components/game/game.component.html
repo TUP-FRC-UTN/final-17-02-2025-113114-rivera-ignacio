@@ -1,0 +1,43 @@
+<div class="mt-5 d-flex justify-content-center align-items-center">
+    <div>
+        <h1>Juego del ahorcado</h1>
+        <div>
+            <svg width="200" height="300">
+                <!-- Dibujo del personaje -->
+                @if (notguessed.length > 0) { <circle cx="150" cy="120" r="20" fill="black" /> <!--cabeza---> }
+                @if (notguessed.length > 1) {<line x1="150" y1="140" x2="150" y2="200" stroke="black" /> <!--cuerpo-->}
+                @if (notguessed.length > 2) {<line x1="150" y1="150" x2="130" y2="180" stroke="black"/> <!--brazo izquierdo-->}
+                @if (notguessed.length > 3) {<line x1="150" y1="150" x2="170" y2="180" stroke="black"  /> <!--brazo derecho-->}
+                @if (notguessed.length > 4) {<line x1="150" y1="200" x2="130" y2="240" stroke="black"  /> <!--pierna izquierda-->}
+                @if (notguessed.length > 5) {<line x1="150" y1="200" x2="170" y2="240" stroke="black"  /> <!--pierna derecha-->}
+            </svg>
+        </div>
+        <div>
+            <p>
+                @for (letter of word?.word; track $index) {
+                    @if(guessed.includes(letter)){
+                        {{letter}}
+                    }
+                    @else {
+                        _
+                    }
+                }
+            </p>
+        </div>
+        <div>
+            Letras incorrectas: {{notguessed.length}}
+        </div>
+        <div>
+            Letras correctas: {{guessed.length}}
+        </div>
+        <div>
+            @for (letter of letters; track $index) {
+                @if(guessed.includes(letter) || notguessed.includes(letter)){
+                    <button class="btn btn-primary" disabled>{{letter}}</button>    
+                }@else {
+                    <button class="btn btn-primary" (click)="guess($index)">{{letter}}</button>
+                }            
+            }
+        </div>
+    </div>    
+</div>

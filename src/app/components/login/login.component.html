@@ -1,0 +1,20 @@
+<div class="mt-5 d-flex justify-content-center align-items-center">
+    <div class="card">
+        <h5 class="card-header">Login</h5>
+        <div class="card-body text-center">
+            <form [formGroup]="loginForm">
+                <div class="mb-3 text-start">
+                  <label for="user" class="form-label">Username</label>
+                  <input type="email" class="form-control" id="user"  formControlName="username">
+                </div>
+                <div class="mb-3 text-start">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" formControlName="password">
+                </div>
+                <button type="button" class="btn btn-primary" (click)="login()">Login</button>
+            </form>
+        </div>
+    </div>
+  </div>
+  
+  
