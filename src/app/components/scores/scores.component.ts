@@ -16,6 +16,19 @@ export class ScoresComponent {
   scores: Score[] = []
 
   constructor(){
+    if(this.user.role == 'admin'){
+      this.scoresService.getScores().subscribe({
+        next: (matches: Score[]) => {
+          this.scores = matches;
+        }
+      })
+    }else{
+      this.scoresService.getScoresOfPlayer(this.user.username).subscribe({
+        next: (matches: Score[]) => {
+          this.scores = matches;
+        }
+      })
+    }
   }
 
 }
